@@ -1,0 +1,80 @@
+@import "panel";
+@import "lity/dist/lity.css";
+@import "leaflet";
+@import "leaflet-geosearch/dist/geosearch.css";
+@import "leaflet.fullscreen/Control.FullScreen.css";
+//@import "../fonts/shabnam/Farsi-Digits/font-face.css";
+//@import "../fonts/tanha/Farsi-Digits/font-face.css";
+
+$main-font-family: Shabnam, Tanha/*Sahel, iransans, Tanha, Vazirmatn*/
+;
+
+
+* {
+  font-family: $main-font-family !important;
+}
+
+*, {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; //rgb(99, 102, 241);
+
+  }
+
+
+}
+
+div:has(table) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 12px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; //rgb(99, 102, 241);
+
+  }
+
+
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+

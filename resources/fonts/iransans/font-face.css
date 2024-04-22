@@ -1,0 +1,18 @@
+@font-face {
+    font-family: Iransans;
+    src: url('iransans.eot');
+    src: url('iransans.eot?#iefix') format('FontName-opentype'),
+    url('iransans.woff') format('woff'),
+    url('iransans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Iransans ;
+    src: url('iransans.eot');
+    src: url('iransans.eot?#iefix') format('embedded-opentype'),
+    url('iransans.woff') format('woff'),
+    url('iransans.ttf') format('truetype');
+    font-weight: bold;
+}
