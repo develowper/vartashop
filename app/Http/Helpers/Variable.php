@@ -48,15 +48,15 @@ class Variable
     const ADMIN_ROLES = ['god', 'owner', 'admin'];
     const AGENCY_TYPES = [
         ['id' => 0, 'name' => 'central', 'level' => '0'],
-        ['id' => 1, 'name' => 'zone_agency', 'level' => '1'],
-        ['id' => 2, 'name' => 'province_agency', 'level' => '2'],
-        ['id' => 3, 'name' => 'branch_agency', 'level' => '3']
+//        ['id' => 1, 'name' => 'zone_agency', 'level' => '1'],
+//        ['id' => 2, 'name' => 'province_agency', 'level' => '2'],
+        ['id' => 1, 'name' => 'branch_agency', 'level' => '3']
 //        ['name' => 'branch', 'code' => 4],
     ];
     const PRODUCT_UNITS = ['qty', 'kg'/*, 'gr'*/];
 
     const ADMIN_ACCESS = ['all'];
-    const GRADES = ['ممتاز','1', '2' ];
+    const GRADES = ['1', '2', '3'];
     const PARTNERSHIP_TYPES = [
         ['name' => 'agency', 'color' => 'gray'],
         ['name' => 'farmer', 'color' => 'teal'],
@@ -202,9 +202,7 @@ class Variable
             ['id' => 1, 'fullname' => 'مدیر مرکزی', 'phone' => '09351414815', 'status' => 'active', 'role' => 'owner', 'agency_id' => 1, 'agency_level' => '0',
                 'access' => json_encode(['all']), 'email' => 'moj2raj2@gmail.com', 'password' => Hash::make(env('ADMIN_PASSWORD')), 'email_verified_at' => Carbon::now(), 'created_at' => Carbon::now(), 'phone_verified' => true,
             ],
-            ['id' => 2, 'fullname' => 'سهیل لطیفی', 'phone' => '09121391009', 'status' => 'active', 'role' => 'owner', 'agency_id' => 10, 'agency_level' => '3',
-                'access' => json_encode(['all']), 'email' => null, 'password' => null, 'email_verified_at' => Carbon::now(), 'created_at' => Carbon::now(), 'phone_verified' => true,
-            ],
+
         ];
     }
 
@@ -215,9 +213,7 @@ class Variable
             ['id' => 1, 'fullname' => 'رجبی', 'phone' => '09018945844', 'status' => 'active', 'ref_id' => 'develowper',
                 'access' => json_encode(['all']), 'email' => 'moj2raj2@gmail.com', 'password' => Hash::make('o7615564351'), 'email_verified_at' => Carbon::now(), 'created_at' => Carbon::now(), 'phone_verified' => true,
             ],
-            ['id' => 2, 'fullname' => 'داریوش بهشتی', 'phone' => '09351414815', 'status' => 'active', 'ref_id' => 'dabel',
-                'access' => json_encode(['all']), 'email' => null, 'password' => Hash::make('Dd20552055'), 'email_verified_at' => Carbon::now(), 'created_at' => Carbon::now(), 'phone_verified' => true,
-            ],
+
         ];
     }
 
@@ -225,10 +221,10 @@ class Variable
     {
         return [
             ['key' => 'hero_main_page', 'value' => __('hero_main_page'), "created_at" => \Carbon\Carbon::now(),],
-            ['key' => 'social_telegram', 'value' => 'lord2095', "created_at" => \Carbon\Carbon::now(),],
-            ['key' => 'social_whatsapp', 'value' => '00989351414815', "created_at" => \Carbon\Carbon::now(),],
-            ['key' => 'social_email', 'value' => 'info@tapchin.ir', "created_at" => \Carbon\Carbon::now(),],
-            ['key' => 'social_phone', 'value' => '09351414815', "created_at" => \Carbon\Carbon::now(),],
+            ['key' => 'social_telegram', 'value' => 'develowper', "created_at" => \Carbon\Carbon::now(),],
+            ['key' => 'social_whatsapp', 'value' => '00989018945844', "created_at" => \Carbon\Carbon::now(),],
+            ['key' => 'social_email', 'value' => 'info@vartashop.ir', "created_at" => \Carbon\Carbon::now(),],
+            ['key' => 'social_phone', 'value' => '09018945844', "created_at" => \Carbon\Carbon::now(),],
             ['key' => 'social_address', 'value' => __('social_address'), "created_at" => \Carbon\Carbon::now(),],
             ['key' => 'order_reserve_minutes', 'value' => 30, "created_at" => \Carbon\Carbon::now(),],
             ['key' => 'order_percent_level_0', 'value' => 15, "created_at" => \Carbon\Carbon::now(),],
@@ -251,7 +247,7 @@ class Variable
                 'per_weight_price' => 0,
                 'base_price' => 0,
                 'free_from_price' => null,
-                'description' => 'مشتری با مراجعه به انبار، کالای خود را دریافت می نماید',
+                'description' => 'مشتری با مراجعه حضوری، کالای خود را دریافت می نماید',
                 'name' => 'دریافت حضوری از انبار',
             ],
 
