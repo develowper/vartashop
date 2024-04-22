@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Helpers\SmsHelper;
+use App\Http\Helpers\SMSHelper;
 use App\Http\Helpers\Telegram;
 use App\Http\Helpers\Variable;
 use App\Models\City;
@@ -73,7 +73,7 @@ class PartnershipController extends Controller
 
         if ($data) {
             Telegram::log(null, 'partnership_created', $data);
-            SmsHelper::deleteCode($data->phone);
+            SMSHelper::deleteCode($data->phone);
             return response()->json(['message' => __('your_request_registered_successfully'),], Variable::SUCCESS_STATUS);
 
         }

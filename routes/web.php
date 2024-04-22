@@ -33,7 +33,7 @@ use App\Http\Controllers\TransferController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Helpers\Pay;
-use App\Http\Helpers\SmsHelper;
+use App\Http\Helpers\SMSHelper;
 use App\Http\Helpers\Telegram;
 use App\Http\Helpers\Util;
 use App\Http\Helpers\Variable;

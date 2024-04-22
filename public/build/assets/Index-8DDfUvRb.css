@@ -1,0 +1,1 @@
+.turbo-progress-bar{position:fixed;display:block;top:0;left:0;height:3px;background:#32cd32;z-index:9999;transition:width .3s ease-out,opacity .15s .15s ease-in;transform:translateZ(0)}

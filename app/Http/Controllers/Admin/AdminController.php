@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Helpers\SmsHelper;
+use App\Http\Helpers\SMSHelper;
 use App\Http\Helpers\Telegram;
 use App\Http\Helpers\Util;
 use App\Http\Helpers\Variable;
@@ -106,7 +106,7 @@ class AdminController extends Controller
                 Util::createImage($request->img, Variable::IMAGE_FOLDERS[Admin::class], $admin->id);
             $res = ['flash_status' => 'success', 'flash_message' => __('done_successfully')];
             Telegram::log(null, 'admin_created', $admin);
-            SmsHelper::deleteCode($request->phone);
+            SMSHelper::deleteCode($request->phone);
             return to_route('admin.panel.admin.index')->with($res);
 
         }

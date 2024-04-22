@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Helpers\SmsHelper;
+use App\Http\Helpers\SMSHelper;
 use App\Http\Helpers\Telegram;
 use App\Http\Helpers\Variable;
 use App\Http\Requests\ProfileRequest;
@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
         Telegram::log(null, 'user_created', $user);
-        SmsHelper::deleteCode($user->phone);
+        SMSHelper::deleteCode($user->phone);
         return redirect(RouteServiceProvider::HOME);
     }
 }

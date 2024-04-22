@@ -48,7 +48,7 @@ class ShippingMethodController extends Controller
 
             $res = ['flash_status' => 'success', 'flash_message' => __('created_successfully')];
 
-//            SmsHelper::deleteCode($phone);
+//            SMSHelper::deleteCode($phone);
             Telegram::log(null, 'shipping-method_created', $data);
         } else    $res = ['flash_status' => 'danger', 'flash_message' => __('response_error')];
         return to_route('admin.panel.shipping-method.index')->with($res);
