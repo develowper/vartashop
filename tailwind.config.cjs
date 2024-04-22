@@ -18,7 +18,7 @@ module.exports = {
                 sans: ['Yekan', 'Tanha', 'Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary: colors.teal,
+                primary: colors.violet,
             },
         },
 
