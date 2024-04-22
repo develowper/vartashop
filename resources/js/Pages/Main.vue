@@ -6,7 +6,7 @@
     </template>
 
     <div
-        class="relative    bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-500 to-emerald-800">
+        class="relative    bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-violet-300 to-indigo-500">
       <!--Hero-->
       <div
           class="opacity-60   bg-no-repeat  bg-cover  blur-sm   z-0 absolute  bottom-2     w-full   h-full      "
@@ -52,11 +52,11 @@
 
 
             </div>
-            <div class=" p-3    gap-2 grid  grid-cols-2 md:grid-cols-4 items-center">
+            <div class=" p-3    gap-2 grid  grid-cols-1 sm:grid-cols-2 items-center">
 
               <SecondaryButton @click="$inertia.visit(route('shop.index'))"
                                class="   grow    "
-                               classes="     py-8  ">
+                               classes="     py-4  ">
                 {{ __('shop') }}
 
 
@@ -64,7 +64,7 @@
               <PartnershipForm :type="'agency'">
                 <template v-slot:partnershipForm="props">
                   <SecondaryButton
-                      classes="  py-8  "
+                      classes="  py-4  "
                       data-te-ripple-init class="      grow    ">{{
                       __('agency')
                     }}
@@ -73,7 +73,7 @@
               </PartnershipForm>
 
 
-              <PartnershipForm :type="'gardener'">
+              <PartnershipForm v-if="false" :type="'gardener'">
                 <template v-slot:partnershipForm="props">
                   <SecondaryButton classes="  py-8  "
                                    data-te-ripple-init class="  grow    ">{{
@@ -82,7 +82,7 @@
                   </SecondaryButton>
                 </template>
               </PartnershipForm>
-              <PartnershipForm :type="'farmer'">
+              <PartnershipForm v-if="false" :type="'farmer'">
                 <template v-slot:partnershipForm="props">
                   <SecondaryButton
                       classes=" py-8 "

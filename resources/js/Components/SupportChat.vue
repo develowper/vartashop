@@ -1,7 +1,7 @@
 <template>
-  <div class="fixed shadow-md  bottom-1 end-1" style="z-index:10000 !important;">
+  <div class="fixed  bottom-1 end-1" style="z-index:10000 !important;">
     <!--:class="maximize?' left-2 top-2 bottom-2 right-2  ':'bottom-1 right-1'"-->
-    <div v-show="showChat" class="bg-white overflow-hidden   rounded-lg "
+    <div v-show="showChat" class="bg-white overflow-hidden shadow-md   rounded-lg "
          :style=" maximize?'height: 90vh;width: 90vw; ':'height:  75vh; ;min-width: 20rem;width:40vw; '">
       <div class="flex flex-col  items-stretch  h-full   ">
 
@@ -54,7 +54,7 @@
 
     </div>
     <div v-show="!showChat"
-         class="rounded-full bg-primary-500 hover:bg-primary-400  cursor-pointer"
+         class="rounded-full shadow-md  bg-primary-500 hover:bg-primary-400  cursor-pointer"
          style="height: 4rem;width: 4rem;"
          @click="showChat=!showChat;chatContainer.scrollTop = chatContainer.scrollHeight;">
       <ChatBubbleLeftEllipsisIcon class="text-white p-3"/>
