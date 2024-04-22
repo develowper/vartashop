@@ -34,7 +34,7 @@ class RepositoryCartController extends Controller
         $needAddress = false;
         $needSelfReceive = false;
         $myAgency = Agency::find($admin->agency_id);
-        if (!$myAgency || !$admin->hasAccess('create_order'))
+        if (!$myAgency || !$admin->hasAccess('create_repository_order'))
             return response()->json(['message' => __('access_denied')], Variable::ERROR_STATUS);
 
         $cols = 'items.product:id,name,repo_id,price,auction_price,in_shop,weight,pack_id,grade';
