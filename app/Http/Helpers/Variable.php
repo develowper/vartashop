@@ -50,7 +50,7 @@ class Variable
         ['id' => 0, 'name' => 'central', 'level' => '0'],
 //        ['id' => 1, 'name' => 'zone_agency', 'level' => '1'],
 //        ['id' => 2, 'name' => 'province_agency', 'level' => '2'],
-        ['id' => 1, 'name' => 'branch_agency', 'level' => '3']
+        ['id' => 1, 'name' => 'branch_agency', 'level' => '1']
 //        ['name' => 'branch', 'code' => 4],
     ];
     const PRODUCT_UNITS = ['qty', 'kg'/*, 'gr'*/];
