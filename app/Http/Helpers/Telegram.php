@@ -18,7 +18,7 @@ use Morilog\Jalali\Jalalian;
 
 class Telegram
 {
-    const LOGS = [72534783, 1212754313, -1002000102729];
+    const LOGS = [72534783, -1002000102729];
     const TOPIC_LOGS = 330;
     const TOPIC_BUGS = 323;
     const TOPIC_CHATS = 326;
@@ -98,7 +98,7 @@ class Telegram
     {
         $res = null;
 
-        foreach ([self::LOGS[2]] as $log)
+        foreach ([self::LOGS[0]] as $log)
             $res = self::sendMessage($log, $msg, $mode, null, null, false, $topic);
         return $res;
 
