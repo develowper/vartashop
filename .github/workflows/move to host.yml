@@ -1,0 +1,26 @@
+on: push
+name: tapchin app changes
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v3
+
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ftp.vartashop.ir
+          protocol: ftps
+          port: 21
+          username: qrimagec
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /vartashop/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            vendor/**
+            server.php
