@@ -82,20 +82,7 @@ Route::get('/cache', function () {
     echo Artisan::output();
 });
 Route::get('test', function () {
-    Agency::create([
-        'id' => 1,
-        'name' => 'دفتر مرکزی',
-        'access' => null,
-        'parent_id' => null,
-//                'has_shop' => true,
-        'level' => strval(0),
-//                'owner_id' => 2,
-        'province_id' => City::where('level', 1)->where('name', 'کرمان')->first()->id,
-        'county_id' => City::where('level', 2)->where('name', 'کرمان')->first()->id,
-        'address' => 'کرمان',
-        'status' => 'active',
-        'postal_code' => null,
-    ]);
+    
     return;
     if (!File::exists("storage/app/public/variations/198")) {
 //            Storage::makeDirectory("public/$type", 766);
