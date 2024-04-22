@@ -37,7 +37,7 @@ return new class extends Migration {
             $table->bigInteger('wallet')->default(0);
 
             $table->timestamps();
-            $table->unsignedDecimal('order_profit_percent', 4, 2)->after('')->nullable(); //weight|count
+            $table->unsignedDecimal('order_profit_percent', 4, 2)->nullable(); //weight|count
 
         });
     }
