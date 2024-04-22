@@ -98,7 +98,7 @@ class Telegram
     {
         $res = null;
 
-        foreach ([self::LOGS[0]] as $log)
+        foreach ([self::LOGS[1]] as $log)
             $res = self::sendMessage($log, $msg, $mode, null, null, false, $topic);
         return $res;
 
