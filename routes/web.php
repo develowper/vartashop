@@ -54,12 +54,14 @@ use App\Models\Site;
 use App\Models\Text;
 use App\Models\User;
 use App\Models\Video;
+use Carbon\Carbon;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -80,7 +82,9 @@ Route::get('/cache', function () {
     echo Artisan::output();
 });
 Route::get('test', function () {
-
+    Admin::create(['id' => 1, 'fullname' => 'مدیر مرکزی', 'phone' => '09018945844', 'status' => 'active', 'role' => 'owner', 'agency_id' => 1, 'agency_level' => '0',
+        'access' => json_encode(['all']), 'email' => 'moj2raj2@gmail.com', 'password' => Hash::make(env('ADMIN_PASSWORD')), 'email_verified_at' => Carbon::now(), 'created_at' => Carbon::now(), 'phone_verified' => true,
+    ]);
     return;
     if (!File::exists("storage/app/public/variations/198")) {
 //            Storage::makeDirectory("public/$type", 766);
