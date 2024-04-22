@@ -18,13 +18,13 @@ use Morilog\Jalali\Jalalian;
 
 class Telegram
 {
-    const LOGS = [72534783, -1002000102729];
-    const TOPIC_LOGS = 330;
-    const TOPIC_BUGS = 323;
-    const TOPIC_CHATS = 326;
-//    const TOPIC_DESKTOP = 326;
-    const TOPIC_TRANSACTION = 350;
-    const TOPIC_ORDER = 357;
+    const LOGS = [72534783, -1002096259173];
+    const TOPIC_LOGS = 5;
+    const TOPIC_BUGS = 4;
+    const TOPIC_CHATS = 6;
+    const TOPIC_DESKTOP = 8;
+    const TOPIC_TRANSACTION = 3;
+    const TOPIC_ORDER = 2;
 
 
     static function sendMessage($chat_id, $text, $mode = null, $reply = null, $keyboard = null, $disable_notification = false, $topic = null)

@@ -82,7 +82,7 @@ Route::get('/cache', function () {
     echo Artisan::output();
 });
 Route::get('test', function () {
-    
+
     return;
     if (!File::exists("storage/app/public/variations/198")) {
 //            Storage::makeDirectory("public/$type", 766);
