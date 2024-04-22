@@ -61,7 +61,7 @@ class SMSHelper
 
     public function send($to, $msg, $cmnd = 'register')
     {
-        if ($to == "09018945844" || $to == "9018945844") return;
+//        if ($to == "09018945844" || $to == "9018945844") return;
         $name = "ورتا شاپ";
         $pattern = $this->register_pattern;
         $code = null;
