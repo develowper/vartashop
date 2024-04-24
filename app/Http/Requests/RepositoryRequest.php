@@ -61,7 +61,7 @@ class RepositoryRequest extends FormRequest
                 'name' => ['required', 'max:200'],
                 'phone' => ['required', "unique:repositories,phone,$this->id", 'max:20'],
                 'address' => ['required', 'max:2048'],
-                'cities' => ['required', 'array',
+                'cities' => ['nullable', 'array',
                     function ($attribute, $value, $fail) use ($childCities) {
                         if (array_diff($value, $childCities))
                             return $fail(sprintf(__("validator.invalid"), __('supported_districts')));

@@ -52,28 +52,7 @@ class AgencyRequest extends FormRequest
                     'parent_id' => 1,
                 ]);
             }
-
-            if ($agency->level == 0) {
-                if ($this->type_id == 1)
-                    $availableParents = [1];
-                elseif ($this->type_id == 2)
-                    $availableParents = Agency::where('level', '1')->whereJsonContains('access', $this->province_id)->pluck('id');
-                elseif ($this->type_id == 3)
-                    $availableParents = Agency::where('level', '2')->where('province_id', $this->province_id)->pluck('id');
-
-            } elseif ($agency->level == 1) {
-                if ($this->type_id == 2)
-                    $availableParents = Agency::where('id', $agency->id)->whereJsonContains('access', $this->province_id)->pluck('id');
-                elseif ($this->type_id == 3)
-                    $availableParents = Agency::where('level', '2')->whereIn('province_id', $agency->access)->where('province_id', $this->province_id)->pluck('id');
-
-            } elseif ($agency->level == 2) {
-
-                if ($this->type_id == 3)
-                    $availableParents = Agency::where('id', $agency->id)->where('province_id', $this->province_id)->pluck('id');
-            } elseif ($agency->level == 3) {
-                $availableParents = Agency::where('level', '2')->where('province_id', $this->province_id)->pluck('id');
-            }
+            $availableParents = Agency::where('level', strval($this->type_id - 1))->pluck('id');
 
             $tmp = array_merge($tmp, [
                 'type_id' => ['required', Rule::in($availableTypes)],
@@ -83,7 +62,6 @@ class AgencyRequest extends FormRequest
                 'province_id' => ['required', Rule::in(City::where('level', 1)->pluck('id'))],
                 'county_id' => ['required', Rule::in(City::where('level', 2)->pluck('id'))],
                 'postal_code' => ['required', 'max:20'],
-                'supported_provinces' => ['required_if:type_id,1'],
                 'location' => ['required', "regex:$regexLocation",],
                 'parent_id' => ['required', Rule::in($availableParents)],
                 'order_profit_percent' => ['nullable', 'numeric', 'min:0', 'max:100', 'decimal:0,2'],

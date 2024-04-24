@@ -670,6 +670,9 @@
                           <div v-if="selected.cmnd=='change-price'"
                                class="   text-sm text-gray-500 ">
                             <span class="text-xs py-2 text-danger-500">{{ __('help_price') }}</span>
+                            <div class="text-xs py-2 text-danger-500">{{
+                                ` [${__('central_profit')}:${asPrice(Math.round($page.props.central_profit * selected.new_price / 100))} ]`
+                              }}</div>
                             <div class="flex flex-col  space-y-2 text-start ">
 
                               <div class="flex flex-col  ">

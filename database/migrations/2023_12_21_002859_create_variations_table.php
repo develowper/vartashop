@@ -16,6 +16,7 @@ return new class extends Migration {
         Schema::create('variations', function (Blueprint $table) {
             $table->id();
             $table->string('name', 200);
+            $table->string('tags', 200)->nullable();
             $table->unsignedBigInteger('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('no action');
             $table->enum('grade', \App\Http\Helpers\Variable::GRADES)->nullable();

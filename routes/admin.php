@@ -320,7 +320,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         );
 
 
-        PanelController::makeInertiaRoute('get', 'variation/create', 'admin.panel.variation.create', 'Panel/Admin/Variation/Create', []);
+        PanelController::makeInertiaRoute('get', 'variation/create', 'admin.panel.variation.create', 'Panel/Admin/Variation/Create', [
+            'central_profit' => (\App\Models\Setting::getValue('tax_percent') ?? 0) + (\App\Models\Setting::getValue('order_percent_level_0') ?? 0)]);
 
         Route::get('variation/index', [VariationController::class, 'index'])->name('admin.panel.variation.index')->middleware("can:view,App\Models\Admin,App\Models\Variation,'1'");
         Route::get('variation/search', [VariationController::class, 'searchPanel'])->name('admin.panel.variation.search')->middleware("can:view,App\Models\Admin,App\Models\Variation,'1'");

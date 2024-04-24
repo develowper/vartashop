@@ -129,7 +129,7 @@
                 <TextInput
                     :id="`price`"
                     type="number"
-                    :placeholder="form.pack_id==1?__('kg_price'):`${__('pack_price')} (${__('currency')})`"
+                    :placeholder="form.pack_id==1?__('kg_price'):`${__('pack_price')}  [ ${__('central_profit')}:${asPrice(Math.round($page.props.central_profit*form.price/100))} ] (${__('currency')})`"
                     classes=" p-2   min-w-[5rem]"
                     v-model="form.price"
                     autocomplete="price"

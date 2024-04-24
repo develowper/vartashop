@@ -52,7 +52,7 @@
                   </template>
                 </Selector>
               </div>
-              <div class="my-2" v-if=" form.type_id==1 ">
+              <div class="my-2" v-if=" form.type_id==1 && false">
                 <Selector ref="provincesSelector" :multiple="true"
                           :data="$page.props.cities.filter((e)=>e.level==1)"
                           :label="__('supported_provinces')"
@@ -67,7 +67,7 @@
               </div>
               <div class="my-2" v-if="form.type_id ">
                 <Selector
-                    v-show="form.type_id>1"
+                    v-show="form.type_id>0"
                     ref="parentSelector"
                     :data="filteredAgencies"
                     :label="__('parent_agency')"
@@ -344,7 +344,7 @@ export default {
 
   },
   mounted() {
-    // this.log(this.$page.props)
+    // this.log(this.filteredAgencies)
 
   },
   watch: {
@@ -360,12 +360,13 @@ export default {
       let myLevel = this.$page.props.agency.level;
       for (let idx in this.$page.props.parent_agencies) {
         //find  level-1 parents
-        if (this.$page.props.parent_agencies[idx].level > myLevel && this.$page.props.parent_agencies[idx].level == this.form.type_id - 1) {
+        if (this.$page.props.parent_agencies[idx].level >= myLevel && this.$page.props.parent_agencies[idx].level == this.form.type_id - 1) {
           let type = this.$page.props.agency_types.filter((e) => e.level == this.form.type_id - 1)[0].name
           this.filteredAgencies.push({
             id: this.$page.props.parent_agencies[idx].id,
             name: `${this.$page.props.parent_agencies[idx].name} | ${this.__(type)}`
           });
+
         }
 
       }

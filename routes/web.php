@@ -83,6 +83,34 @@ Route::get('/cache', function () {
 });
 Route::get('test', function () {
 
+    foreach (DB::table('pps')->get() as $idx => $item) {
+        $product = \App\Models\Variation::create([
+            'agency_id' => 2,
+            'repo_id' => 1,
+            'name' => $item->name,
+            'in_shop' => $item->count,
+            'price' => $item->price,
+            'description' => $item->description,
+            'tags' => $item->tags,
+            'grade' => 1,
+            'pack_id' => 1,
+        ]);
+        $id = $idx + 1;
+        foreach (DB::table('images')->where('for_id', $item->id)->pluck('id') as $idx => $imageId) {
+            if (!Storage::exists("public/variations")) {
+                File::makeDirectory(Storage::path("public/variations"), $mode = 0755,);
+            }
+            if (!Storage::exists("public/variations/$id")) {
+                File::makeDirectory(Storage::path("public/variations/$id"), $mode = 0755,);
+            }
+            if (Storage::exists("public/pps/$imageId.jpg")) {
+                $name = $idx == 0 ? 'thumb.jpg' : "$idx.jpg";
+                Storage::copy("public/pps/$imageId.jpg", "public/variations/$id/$name");
+            }
+        }
+
+    }
+
     return;
     if (!File::exists("storage/app/public/variations/198")) {
 //            Storage::makeDirectory("public/$type", 766);

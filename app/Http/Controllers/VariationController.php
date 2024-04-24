@@ -27,7 +27,8 @@ class VariationController extends Controller
     {
         $admin = $request->user();
         return Inertia::render('Panel/Admin/Variation/Index', [
-            'agencyRepositories' => $admin->allowedAgencies(Agency::find($admin->agency_id))->with('repositories:id,name,agency_id')->select('id', 'name')->get()
+            'agencyRepositories' => $admin->allowedAgencies(Agency::find($admin->agency_id))->with('repositories:id,name,agency_id')->select('id', 'name')->get(),
+            'central_profit' => (\App\Models\Setting::getValue('tax_percent') ?? 0) + (\App\Models\Setting::getValue('order_percent_level_0') ?? 0),
         ]);
 
     }
