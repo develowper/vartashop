@@ -82,7 +82,7 @@ Route::get('/cache', function () {
     echo Artisan::output();
 });
 Route::get('test', function () {
-
+    return;
     foreach (DB::table('pps')->get() as $idx => $item) {
         $product = \App\Models\Variation::create([
             'agency_id' => 2,
