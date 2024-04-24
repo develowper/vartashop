@@ -6,7 +6,7 @@
 
     </template>
     <div
-        class="  py-8  shadow-md bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-teal-500 to-teal-500">
+        class="  py-8  shadow-md bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-400 to-primary-500">
 
     </div>
     <section class=" container  max-w-2xl  mx-auto justify-center pt-24  ">

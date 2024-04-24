@@ -83,6 +83,7 @@ Route::get('/cache', function () {
 });
 Route::get('test', function () {
     return;
+    DB::statement('SET FOREIGN_KEY_CHECKS=0;');
     foreach (DB::table('pps')->get() as $idx => $item) {
         $product = \App\Models\Variation::create([
             'agency_id' => 2,
@@ -103,9 +104,9 @@ Route::get('test', function () {
             if (!Storage::exists("public/variations/$id")) {
                 File::makeDirectory(Storage::path("public/variations/$id"), $mode = 0755,);
             }
-            if (Storage::exists("public/pps/$imageId.jpg")) {
+            if (Storage::exists("public/faker/pps/$imageId.jpg")) {
                 $name = $idx == 0 ? 'thumb.jpg' : "$idx.jpg";
-                Storage::copy("public/pps/$imageId.jpg", "public/variations/$id/$name");
+                Storage::copy("public/faker/pps/$imageId.jpg", "public/variations/$id/$name");
             }
         }
 

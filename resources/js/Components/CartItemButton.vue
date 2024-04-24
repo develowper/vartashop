@@ -3,7 +3,7 @@
   <div class="flex    flex-col ">
 
     <div class="flex  ">
-      <div @click.stop="!show? show=true:  !loading? edit({variation_id:productId,qty:inCart}):null "
+      <div @click.prevent="!show? show=true:  !loading? edit({variation_id:productId,qty:inCart}):null "
            :class="  show ?'rounded-s-md':'rounded-md'"
            class="border grow   flex justify-center items-center   border-primary-500 text-primary-500 p-2  hover:bg-primary-400 hover:text-white">
         <ShoppingCartIcon v-if=" !show" :class="{'border-e pe-1':inCart}" class="w-7 h-6  "/>
@@ -13,7 +13,7 @@
           <LoadingIcon v-else class="w-6 h-6 fill-primary-500"/>
         </div>
       </div>
-      <div v-if="show && !loading" @click.stop="inCart=inCart; show=false"
+      <div v-if="show && !loading" @click.prevent="inCart=inCart; show=false"
            class=" text-white flex   rounded-e-md bg-danger-600 hover:bg-danger-500 hover:text-white">
         <XMarkIcon class="w-8  mx-2"/>
       </div>
@@ -21,14 +21,14 @@
     <Transition name="fade">
       <div class="   my-2 flex justify-center items-stretch text-primary-500 "
            v-show=" show">
-        <div @click.stop="plus()"
+        <div @click.prevent="plus()"
              class=" items-center flex   border rounded-s border-primary-500 hover:bg-primary-500 hover:text-white">
           <PlusIcon
               class="w-6  mx-3 "/>
         </div>
-        <input @click.stop type="number" min="0" v-model="inCart"
+        <input @click.prevent type="number" min="0" v-model="inCart"
                class="  flex w-full shrink text-lg p-1 border text-center focus:border-primary-500 border-primary-500 focus:ring-primary-500">
-        <div @click.stop="minus()"
+        <div @click.prevent="minus()"
              class="items-center flex  border rounded-e border-primary-500 hover:bg-primary-500 hover:text-white">
           <MinusIcon
               class="w-6 mx-3"/>

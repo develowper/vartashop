@@ -5,7 +5,7 @@
 
     </template>
     <div
-        class="  py-8  shadow-md bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-teal-500 to-teal-500">
+        class="  py-8  shadow-md bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-400 to-primary-500">
 
     </div>
 
@@ -93,9 +93,9 @@
                     <!--                    <div class="text-neutral-600 mx-1">{{ __('price_unit') }}:</div>-->
                     <!--                    <div class="text-neutral-600 mx-1">{{ asPrice(item.cart_item.product.price) }}</div>-->
 
-                    <div class="text-neutral-600 mx-1">{{ __('kg_price') }}:</div>
+                    <div class="text-neutral-600 mx-1">{{ __('price') }}:</div>
                     <div class="text-neutral-600 mx-1">{{
-                        asPrice(Math.round(item.cart_item.product.price / item.cart_item.product.weight))
+                        asPrice(Math.round(item.cart_item.product.price ))
                       }}
                     </div>
                     <TomanIcon class="w-5 h-5 text-neutral-400"/>

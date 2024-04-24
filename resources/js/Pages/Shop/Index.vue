@@ -6,7 +6,7 @@
     </template>
 
     <div
-        class="  py-8  shadow-md bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-teal-500 to-teal-500">
+        class="  py-8  shadow-md bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-400 to-primary-500">
 
     </div>
 
@@ -56,15 +56,14 @@
           class="  mt-6   gap-y-3 gap-x-2 grid   sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
         <div class="bg-white  shadow-md rounded-lg  "
              v-for="(p,idx) in products">
-          <article @click="$inertia.visit(  route( 'variation.view',{id:p.id,name:p.name}) )" :id="p.id"
-                   class="overflow-hidden flex flex-row sm:flex-col   hover:cursor-pointer hover:scale-[101%] duration-300">
+          <Link :href=" route( 'variation.view',{id:p.id,name:p.name})" :id="p.id"
+                class="overflow-hidden flex flex-row sm:flex-col   hover:cursor-pointer hover:scale-[101%] duration-300">
             <div class="flex flex-col">
               <div class="md:mx-auto sm:h-64 sm:w-full  h-24    w-32 shadow-md  ">
                 <!--                <Image :data-lity="route('storage.variations')+`/${p.id}/thumb.jpg`"-->
                 <!--                       classes="object-cover  h-full w-full  rounded-t-lg rounded-b   "-->
                 <!--                       :src="route('storage.variations')+`/${p.id}/thumb.jpg`"></Image> -->
                 <Image classes="object-cover  h-full w-full  rounded-t-lg rounded-b   "
-
                        :src="route('storage.variations')+`/${p.id}/thumb.jpg`"></Image>
               </div>
               <div class="flex my-1 items-center justify-start text-xs text-gray-400">
@@ -95,13 +94,16 @@
               </div>
               <div class="flex items-center text-sm">
                 <div>{{ __('weight') + ` : ${parseFloat(p.weight)}` }}</div>
-                <div class="text-sm text-neutral-500 mx-2">{{ __('kg') }}</div>
+                <div class="text-sm text-neutral-500 mx-2">{{
+                    p.weight > 0 && p.weight < 1 ? __('gr') : __('kg')
+                  }}
+                </div>
 
               </div>
               <div class="flex items-center justify-end">
                 <div class="flex items-center "
                      :class="{'line-through text-neutral-500':$page.props.is_auction && p.in_auction}">
-                  {{ asPrice(Math.round(p.price / p.weight)) }}
+                  {{ asPrice(Math.round(p.price)) }}
 
                   <svg v-if="$page.props.is_auction && p.in_auction" xmlns="http://www.w3.org/2000/svg"
                        viewBox="0 0 14 14"
@@ -115,11 +117,10 @@
                 </div>
                 <div v-if=" p.in_auction==true" class="flex items-center ">
                   <ArrowTrendingUpIcon class="  rotate-180 text-neutral-500 mx-2"/>
-                  <span>  {{ asPrice(Math.round(p.auction_price / p.weight)) }}</span>
+                  <span>  {{ asPrice(Math.round(p.auction_price)) }}</span>
 
                 </div>
                 <TomanIcon class="w-4 h-4 mx-2"/>
-                <span class="text-xs mx-2 text-gray-500"> {{ `(${__('per_kg')})` }}</span>
 
               </div>
 
@@ -128,7 +129,7 @@
               </div>
 
             </div>
-          </article>
+          </Link>
 
         </div>
       </div>
