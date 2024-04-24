@@ -70,7 +70,7 @@ class VariationController extends Controller
             $join->on('variations.repo_id', '=', 'repositories.id')
                 ->where('repositories.status', 'active')
                 ->where('repositories.is_shop', true)
-                ->where('variations.agency_level', '3')
+//                ->where('variations.agency_level', '3')
                 ->where(function ($query) use ($inShop) {
                     if ($inShop)
                         $query->where('variations.in_shop', '>', 0);
