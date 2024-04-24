@@ -16,15 +16,16 @@ return new class extends Migration {
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedTinyInteger('level')->default(1);
             $table->string('name', 100);
-            $table->boolean('has_child')->default(false);
-            $table->boolean('is_active')->default(true);
+            $table->enum('status', array_column(Variable::STATUSES, 'name'))->default('active');
             $table->unsignedInteger('parent_id')->nullable();
+            $table->json('children')->nullable();
             $table->foreign('parent_id')->references('id')->on('categories')->onDelete('no action');
             $table->timestamps();
         });
 
-        DB::table('categories')->insert(collect(Variable::CATEGORIES)->pluck('name')->map(fn($e) => ['name' => $e])->toArray());
+        DB::table('categories')->insert(Variable::CATEGORIES);
     }
 
     /**

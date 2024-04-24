@@ -7,6 +7,7 @@ use App\Models\AdminFinancial;
 use App\Models\Agency;
 use App\Models\AgencyFinancial;
 use App\Models\Car;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Driver;
 use App\Models\Order;
@@ -136,6 +137,9 @@ class AdminPolicy
                     break;
                 case    Admin::class:
                     $res = $admin->hasAccess('create_admin');
+                    break;
+                case    Category::class:
+                    $res = $admin->hasAccess('create_category');
                     break;
             }
 

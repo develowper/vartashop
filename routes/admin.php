@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\OrderController;
@@ -36,7 +37,7 @@ use App\Models\Product;
 use App\Models\Variation;
 use Illuminate\Support\Facades\Route;
 
-
+//return;
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -281,6 +282,21 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::patch('pack/update', [PackController::class, 'update'])->name('admin.panel.pack.update');
         Route::post('pack/create', [PackController::class, 'create'])->name('admin.panel.pack.create')->middleware("can:create,App\Models\Admin,App\Models\Pack,'1'");
         Route::get('pack/{pack}', [PackController::class, 'edit'])->name('admin.panel.pack.edit');
+
+
+        PanelController::makeInertiaRoute('get', 'category/index', 'admin.panel.category.index', 'Panel/Admin/Category/Index',
+            ['categories' => \App\Models\Category::select('id', 'name', 'parent_id')->get()]
+        );
+
+        PanelController::makeInertiaRoute('get', 'category/create', 'admin.panel.category.create', 'Panel/Admin/Category/Create',
+            [], "can:create,App\Models\Admin,App\Models\Category,'1'"
+        );
+
+        Route::get('category/tree', [CategoryController::class, 'getTree'])->name('admin.panel.category.tree');
+        Route::get('category/search', [CategoryController::class, 'searchPanel'])->name('admin.panel.category.search');
+        Route::patch('category/update', [CategoryController::class, 'update'])->name('admin.panel.category.update');
+        Route::post('category/create', [CategoryController::class, 'create'])->name('admin.panel.category.create')->middleware("can:create,App\Models\Admin,App\Models\Category,'1'");
+        Route::get('category/{category}', [CategoryController::class, 'edit'])->name('admin.panel.category.edit');
 
 
         PanelController::makeInertiaRoute('get', 'product/index', 'admin.panel.product.index', 'Panel/Admin/Product/Index',

@@ -24,7 +24,7 @@
             <Link href="#"
                   class="flex px-6   py-4  justify-around      text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
               <Image classes=" flex-shrink-0  object-cover mx-1 rounded-full w-9 h-9"
-                     :src="route('storage.users')+`/${user.id}.jpg`"
+                     :src="route(`storage.${isAdmin()?'admins':'users'}`)+`/${user.id}.jpg`"
                      alt="jane avatar"
                      type="user"/>
 

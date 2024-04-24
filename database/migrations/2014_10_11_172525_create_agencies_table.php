@@ -3,6 +3,7 @@
 use App\Http\Helpers\Variable;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
@@ -40,6 +41,7 @@ return new class extends Migration {
             $table->unsignedDecimal('order_profit_percent', 4, 2)->nullable(); //weight|count
 
         });
+        DB::table('agencies')->insert(Variable::getAgencies());
     }
 
     /**

@@ -683,6 +683,7 @@ class Telegram
                     if ($isEdit)
                         $msg .= " 👋🏻 " . "یک درخواست ویرایش شد" . PHP_EOL;
                     $msg .= "\xD8\x9C" . "➖➖➖➖➖➖➖➖➖➖➖" . PHP_EOL;
+
                     $msg .= " 👤 " . __($data->type) . PHP_EOL;
                     $msg .= "$data->fullname ( $data->phone )" . PHP_EOL;
                     $msg .= "\xD8\x9C" . "➖➖➖➖➖➖➖➖➖➖➖" . PHP_EOL;
@@ -694,6 +695,33 @@ class Telegram
                     $msg .= " 🔖 " . "آدرس: " . PHP_EOL . ($cities->where('id', $data->province_id)->first()->name ?? '') . '-' . ($cities->where('id', $data->county_id)->first()->name ?? '') . PHP_EOL;
                     $msg .= " 🪧 " . $data->address . PHP_EOL;
                     break;
+
+                case 'category_created':
+                case 'category_edited':
+
+                    if ($isCreate)
+                        $msg .= " 👋🏻 " . "دسته بندی ثبت شد" . PHP_EOL;
+                    if ($isEdit)
+                        $msg .= " 👋🏻 " . "دسته بندی ویرایش شد" . PHP_EOL;
+                    $msg .= "\xD8\x9C" . "➖➖➖➖➖➖➖➖➖➖➖" . PHP_EOL;
+                    $msg .= " 👤 " . "کاربر: " . PHP_EOL;
+                    $msg .= "$us->fullname ( $us->phone )" . PHP_EOL;
+                    $msg .= "\xD8\x9C" . "➖➖➖➖➖➖➖➖➖➖➖" . PHP_EOL;
+                    function loopPrint($item, $msg)
+                    {
+                        $space = collect(range($item->level))->map(fn($e) => ' ')->join("");
+                        $msg .= $space . ($item->children ? "🔻" : " ➖ ") . "$item->name" . PHP_EOL;
+                        foreach ($item->children as $child) {
+                            loopPrint($child, $msg);
+
+                        }
+                    }
+
+                    if (is_array($data))
+                        loopPrint($data, $msg);
+
+                    break;
+
                 case 'site_created':
                     $msg .= " 🟢 " . "یک سایت ساخته شد" . PHP_EOL;
                     $msg .= "\xD8\x9C" . "➖➖➖➖➖➖➖➖➖➖➖" . PHP_EOL;
@@ -1183,7 +1211,7 @@ class Telegram
                     break;
                 default :
                     $msg .= $type . PHP_EOL;
-                    if (method_exists($data, 'getAttributes'))
+                    if (!is_array($data) && method_exists($data, 'getAttributes'))
                         $msg .= print_r($data->getAttributes(), true);
                     else
                         $msg .= print_r($data, true);

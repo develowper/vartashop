@@ -362,7 +362,7 @@
                                 <XMarkIcon class="w-8 h-6 my-2 "/>
                               </div>
                               <select class="grow rounded-e border-400 cursor-pointer" name=""
-                                      @change="($e)=>{log(d.agency_id);d.new_repo_id=$e.target.value;}"
+                                      @change="($e)=>{ d.new_repo_id=$e.target.value;}"
                                       :id=" `selectRepo${d.id}` " v-model="d.new_repo_id">
                                 <option class="text-start rounded p-2 m-2"
                                         v-for="d in filteredRepositories[d.agency_id] "

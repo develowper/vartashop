@@ -13,6 +13,7 @@ use App\Models\BannerTransaction;
 use App\Models\Business;
 use App\Models\BusinessTransaction;
 use App\Models\Car;
+use App\Models\City;
 use App\Models\Driver;
 use App\Models\Message;
 use App\Models\Order;
@@ -104,9 +105,12 @@ class Variable
 
     ];
     const CATEGORIES = [
-        ['name' => 'fruit_vegetable', 'color' => 'teal'],
-        ['name' => 'protein', 'color' => 'rose'],
-        ['name' => 'beans', 'color' => 'indigo'],
+        ['id' => 1, 'name' => 'آرایشی', 'parent_id' => null, 'children' => '[6]', 'level' => 1],
+        ['id' => 2, 'name' => 'اکسسوری', 'parent_id' => null, 'children' => "[]", 'level' => 1],
+        ['id' => 3, 'name' => 'دکوراتیو', 'parent_id' => null, 'children' => "[]", 'level' => 1],
+        ['id' => 4, 'name' => 'پوشاک', 'parent_id' => null, 'children' => "[]", 'level' => 1],
+        ['id' => 5, 'name' => 'خوراکی', 'parent_id' => null, 'children' => " []", 'level' => 1],
+        ['id' => 6, 'name' => 'کرم', 'parent_id' => 1, 'children' => "[]", 'level' => 2],
 
 
     ];
@@ -195,6 +199,26 @@ class Variable
         ];
     }
 
+    static function getAgencies()
+    {
+        return [
+
+            [
+                'id' => 1,
+                'name' => 'دفتر مرکزی',
+                'access' => null,
+                'parent_id' => null,
+                'level' => strval(0),
+                'province_id' => City::where('level', 1)->where('name', 'کرمان')->first()->id,
+                'county_id' => City::where('level', 2)->where('name', 'کرمان')->first()->id,
+                'address' => 'کرمان',
+                'status' => 'active',
+                'postal_code' => null,
+            ]
+
+        ];
+    }
+
     static function getAdmins()
     {
         return [
@@ -227,10 +251,10 @@ class Variable
             ['key' => 'social_phone', 'value' => '09018945844', "created_at" => \Carbon\Carbon::now(),],
             ['key' => 'social_address', 'value' => __('social_address'), "created_at" => \Carbon\Carbon::now(),],
             ['key' => 'order_reserve_minutes', 'value' => 30, "created_at" => \Carbon\Carbon::now(),],
-            ['key' => 'order_percent_level_0', 'value' => 15, "created_at" => \Carbon\Carbon::now(),],
-            ['key' => 'order_percent_level_1', 'value' => 0.5, "created_at" => \Carbon\Carbon::now(),],
-            ['key' => 'order_percent_level_2', 'value' => 82, "created_at" => \Carbon\Carbon::now(),],
-            ['key' => 'order_percent_level_3', 'value' => 2.5, "created_at" => \Carbon\Carbon::now(),],
+            ['key' => 'order_percent_level_0', 'value' => 20, "created_at" => \Carbon\Carbon::now(),],
+            ['key' => 'order_percent_level_1', 'value' => 80, "created_at" => \Carbon\Carbon::now(),],
+            ['key' => 'order_percent_level_2', 'value' => 0, "created_at" => \Carbon\Carbon::now(),],
+            ['key' => 'order_percent_level_3', 'value' => 0, "created_at" => \Carbon\Carbon::now(),],
 
         ];
     }

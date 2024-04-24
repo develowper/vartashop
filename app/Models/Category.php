@@ -9,8 +9,16 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'parent_id'];
-
+    protected $fillable = [
+        'name',
+        'level',
+        'status',
+        'parent_id',
+        'children',
+    ];
+    protected $casts = [
+        'children' => 'array',
+    ];
 
     public function articles()
     {

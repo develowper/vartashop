@@ -169,7 +169,7 @@ class Admin extends Authenticatable
         if (in_array($this->role, ['god']))
             return true;
 
-        if (in_array($item, ['create_pack', 'edit_pack', 'create_product', 'edit_product', 'edit_repository_order', 'edit_setting', 'edit_financial', 'view_user'])) {
+        if (in_array($item, ['create_pack', 'edit_pack', 'create_product', 'edit_product', 'edit_repository_order', 'edit_setting', 'edit_financial', 'view_user', 'create_category', 'edit_category'])) {
             return $this->agency_id == 1 && (in_array($this->role, ['owner']) || in_array($item, $this->access));
         }
         if (in_array($item, ['create_repository_order'])) {
