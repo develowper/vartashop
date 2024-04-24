@@ -711,7 +711,7 @@ class Telegram
                     {
 
                         $item = (object)$item;
-                        $space = collect(range($item->level))->map(fn($e) => ' ')->join("");
+                        $space = collect(range(1, $item->level))->map(fn($e) => ' ')->join("");
                         $msg .= $space . ($item->children ? "🔻" : " ➖ ") . "$item->name" . PHP_EOL;
                         foreach ($item->children as $child) {
                             loopPrint($child, $msg);
