@@ -707,7 +707,7 @@ class Telegram
                     $msg .= " 👤 " . "کاربر: " . PHP_EOL;
                     $msg .= "$us->fullname ( $us->phone )" . PHP_EOL;
                     $msg .= "\xD8\x9C" . "➖➖➖➖➖➖➖➖➖➖➖" . PHP_EOL;
-                    function loopPrint($item, $msg)
+                    function loopPrint($item, &$msg)
                     {
 
                         $item = (object)$item;
@@ -717,6 +717,7 @@ class Telegram
                             loopPrint($child, $msg);
 
                         }
+
                     }
 
                     if (is_array($data))
