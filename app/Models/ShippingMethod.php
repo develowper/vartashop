@@ -22,6 +22,7 @@ class ShippingMethod extends Model
         'min_order_weight',
         'base_price',
         'name',
+        'pay_type',
         'description',
         'free_from_price',
         'timestamps',

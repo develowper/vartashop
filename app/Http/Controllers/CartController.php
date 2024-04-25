@@ -327,7 +327,7 @@ class CartController extends Controller
             $default['location'] = optional($repo)->location;
             $default['province_id'] = optional($repo)->province_id;
             $default['county_id'] = optional($repo)->county_id;
-            $default['pay_type'] = optional($repo)->pay_type;
+            $default['pay_type'] = 'online';
             $default['timestamps'] = Variable::TIMESTAMPS;
 //            $errors = $cart->errors ?? [];
             $methodId = 'rand-' . time();
