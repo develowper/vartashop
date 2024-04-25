@@ -131,7 +131,7 @@ class CartController extends Controller
             if ($qty < 0)
                 return response()->json(['message' => sprintf(__('validator.invalid'), __('requested_qty'))], Variable::ERROR_STATUS);
             elseif ($qty > $inShopQty)
-                return response()->json(['message' => sprintf(__('validator.max_items'), __('product'), floatval($inShopQty), $qty)], Variable::ERROR_STATUS);
+                return response()->json(['message' => sprintf(__('validator.max_items'), __('product'), floatval($inShopQty), floatval($qty))], Variable::ERROR_STATUS);
             elseif ($qty < $minAllowed)
                 return response()->json(['message' => sprintf(__('validator.min_order_product'), $minAllowed)], Variable::ERROR_STATUS);
 
@@ -177,7 +177,7 @@ class CartController extends Controller
             if (($cartItem->qty ?? 0) > ($product->in_shop ?? 0)) {
 //                $cartItem->qty = $product->in_shop;
 //                $cartItem->save();
-                $cartItem->error_message = $product->in_shop > 0 ? sprintf(__('validator.max_items'), __('product'), floatval($product->in_shop), $cartItem->qty) : __('this_item_finished');
+                $cartItem->error_message = $product->in_shop > 0 ? sprintf(__('validator.max_items'), __('product'), floatval($product->in_shop), floatval($cartItem->qty)) : __('this_item_finished');
                 $errors[] = ['key' => $product->name, 'type' => 'product', 'message' => $cartItem->error_message];
             } elseif ($cartItem->qty < $product->min_allowed) {
 //                $cartItem->qty = $product->in_shop;
@@ -225,7 +225,7 @@ class CartController extends Controller
                 $shippingMethods = $repo->getRelation('shippingMethods')->where('status', 'active');
 
                 $shipments[$idx] = null;
-                $supportCity = in_array($cityId, $repo->cities ?? []);
+                $supportCity = count($repo->cities ?? []) == 0 || in_array($cityId, $repo->cities ?? []);
 
                 $cityProductRestrict = $supportCity ? $shippingMethods
                     ->filter(function ($e) use ($cartItem, $cityId, $repo) {
@@ -364,6 +364,7 @@ class CartController extends Controller
                 ];
                 $needAddress = false;
             }
+            /*
             //if user checked timestamp
             if ($request->exists('timestamp_shipping_' . $shipments[$idx]['method_id'])) {
                 $timestampIdx = $request->{"timestamp_shipping_" . $shipments[$idx]['method_id']};
@@ -435,7 +436,7 @@ class CartController extends Controller
 
 
             $shipments[$idx]['shipping']['timestamps'] = collect($editedTimestamps)->groupBy('group')->toArray();
-
+*/
         }
 
         $needAddress = $needAddress && in_array($request->current, ['checkout.payment', 'checkout.shipping']);

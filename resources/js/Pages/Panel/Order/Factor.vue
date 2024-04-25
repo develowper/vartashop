@@ -146,13 +146,13 @@
           </td>
           <td class="border text-center p-2  ">
             {{
-              `${(parseFloat(item.total_weight) || 0)}`
+              `${(parseFloat(item.qty) || 0)}`
             }}
           </td>
 
           <td class="border text-center p-2  ">
             {{
-              `${asPrice(Math.round((item.total_price || 0) / ((item.total_weight || 1))))}`
+              `${asPrice(Math.round((item.total_price || 0) / ((item.qty || 1))))}`
             }}
           </td>
           <td class="border text-center p-2  ">
@@ -171,7 +171,9 @@
         </tr>
         <tr>
           <td colspan="5" class="border text-center p-2">{{ __('shipping_price') }}</td>
-          <td colspan="1" class="border text-center p-2">{{ asPrice(data.total_shipping_price) }}</td>
+          <td colspan="1" class="border text-center p-2">{{
+              data.shipping_method && data.shipping_method.pay_type == 'local' ? __('local') : asPrice(data.total_shipping_price)
+            }}</td>
         </tr>
 
         <tr v-if="data.change_price">

@@ -143,6 +143,7 @@
     <div ref="loader">
       <LoadingIcon v-show="loading" type="linear"/>
     </div>
+
   </Scaffold>
 
 </template>

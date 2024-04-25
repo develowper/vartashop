@@ -30,6 +30,7 @@ return new class extends Migration {
             $table->string('name', 200);
             $table->string('description', 2048)->nullable();
             $table->enum('status', array_column(Variable::STATUSES, 'name'))->default('inactive');
+            $table->enum('pay_type', array_column(Variable::getPaymentMethods(), 'key'))->default('inactive');
             $table->timestamps();
             $table->json('timestamps')->nullable();
             $table->unsignedBigInteger('shipping_agency_id')->nullable();

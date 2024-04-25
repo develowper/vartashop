@@ -77,23 +77,25 @@ class VariationController extends Controller
                 })->where(function ($query) use ($parentIds) {
                     if ($parentIds && is_array($parentIds) && count($parentIds) > 0)
                         $query->whereIntegerInRaw('variations.product_id', $parentIds);
-                })->where(function ($query) use ($provinceId) {
-                    if ($provinceId === null)
-                        $query->where('repositories.id', 0);
-                    elseif ($provinceId)
-                        $query->where('repositories.province_id', $provinceId);
-                })->where(function ($query) use ($countyId, $districtId) {
-
-                    if ($countyId === null)
-                        $query->where('repositories.id', 0);
-                    elseif ($countyId && intval($districtId) === 0)
-                        $query->whereJsonContains('repositories.cities', intval($countyId));
-                })->where(function ($query) use ($districtId) {
-                    if ($districtId === null)
-                        $query->where('repositories.id', 0);
-                    elseif ($districtId)
-                        $query->whereJsonContains('repositories.cities', intval($districtId));
-                });
+                })
+//                ->where(function ($query) use ($provinceId) {
+//                    if ($provinceId === null)
+//                        $query->where('repositories.id', 0);
+//                    elseif ($provinceId)
+//                        $query->where('repositories.province_id', $provinceId);
+//                })->where(function ($query) use ($countyId, $districtId) {
+//
+//                    if ($countyId === null)
+//                        $query->where('repositories.id', 0);
+//                    elseif ($countyId && intval($districtId) === 0)
+//                        $query->whereJsonContains('repositories.cities', intval($countyId));
+//                })->where(function ($query) use ($districtId) {
+//                    if ($districtId === null)
+//                        $query->where('repositories.id', 0);
+//                    elseif ($districtId)
+//                        $query->whereJsonContains('repositories.cities', intval($districtId));
+//                })
+            ;
 
         })->select('variations.id', 'variations.product_id',
             'repositories.id as repo_id',

@@ -95,7 +95,7 @@
 
                     <div class="text-neutral-600 mx-1">{{ __('price') }}:</div>
                     <div class="text-neutral-600 mx-1">{{
-                        asPrice(Math.round(item.cart_item.product.price ))
+                        asPrice(Math.round(item.cart_item.product.price))
                       }}
                     </div>
                     <TomanIcon class="w-5 h-5 text-neutral-400"/>
@@ -172,11 +172,14 @@
                 </div>
                 <div class="flex items-center">
                   <div class="text-neutral-500">{{ __('shipping_price') }} :</div>
-                  <div class="mx-2">{{ asPrice(shipment.total_shipping_price) }}</div>
-                  <TomanIcon class=""/>
+
+                  <div class="mx-2">
+                    {{ shipment.method.pay_type == 'online' ? asPrice(shipment.total_shipping_price) : __('local') }}
+                  </div>
+                  <TomanIcon v-if="shipment.method.pay_type == 'online'" class=""/>
                 </div>
 
-                <div class="my-2">
+                <div v-if="false" class="my-2">
 
                   <Timestamp v-if="shipment.has_available_shipping && !shipment.visit_checked  " mode="view"
                              :errors="shipment.error_message"

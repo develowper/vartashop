@@ -53,7 +53,7 @@ class OrderController extends Controller
             return response()->json(['message' => __('order_not_found'),], Variable::ERROR_STATUS);
 
         $data->order_id = "$data->id";
-        $data->shipping_method = ShippingMethod::select('id', 'name', 'description')->find($data->shipping_method_id);
+        $data->shipping_method = ShippingMethod::select('id', 'name', 'description', 'pay_type')->find($data->shipping_method_id);
         $data->transaction = Transaction::where([
             'for_type' => 'order',
             'for_id' => $data->id,
