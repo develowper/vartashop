@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use Spatie\Browsershot\Browsershot;
 use Spatie\Browsershot\Exceptions\CouldNotTakeBrowsershot;
+use Intervention\Image\Gd\Font;
 
 class Util
 {
@@ -58,7 +59,7 @@ class Util
         $file->move(storage_path("app/public/$type"), "$name." . $file->extension());
     }
 
-    static function createImage($img, $type, $name = null, $folder = null, $maxSize = null)
+    static function createImage($img, $type, $name = null, $folder = null, $maxSize = null, $watermark = true)
     {
 
         $image_parts = explode(";base64,", $img);
@@ -100,6 +101,25 @@ class Util
                 })->save($path);
                 clearstatcache();
 
+            }
+        }
+        if ($watermark) {
+            $p = $folder ? "public/$type/$folder/$name.jpg" : "public/$type/$name.jpg";
+            if (Storage::exists("$p")) {
+
+                $image = \Intervention\Image\ImageManagerStatic::make(Storage::path($p));
+                $width = $image->width();
+                $height = $image->height();
+                $font = function (Font $font) use ($height) {
+                    $fontPath = resource_path('fonts/shabnam/Shabnam.ttf');
+                    $font->file($fontPath);
+                    $font->size(max(20, $height / 10));
+                    $font->color(array(255, 255, 255, .9));
+                    $font->align('left');
+                    $font->valign('bottom');
+                };
+                $image->text("vartashop.ir", 20, $height - 20, $font);
+                $image->save(Storage::path($p));
             }
         }
         imagedestroy($source);
