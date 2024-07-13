@@ -35,6 +35,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         $editMode = (bool)$this->id;
+        $this->tags = is_array($this->tags) ? join(',', $this->tags) : $this->tags;
         $tmp = [];
         if (!$this->cmnd) {
 
