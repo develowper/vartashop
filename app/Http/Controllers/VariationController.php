@@ -34,8 +34,11 @@ class VariationController extends Controller
     }
 
     public
-    function view(Request $request, $id)
+    function view(Request $request, $id, $name)
     {
+        if ($name && str_starts_with($name, "ref$")) {
+            $inviterId = explode("$", $name)[1];
+        }
         $data = Variation::where('id', $id)->with('repository')->firstOrNew();
         $product = Product::findOrNew($data->product_id);
         $data->description = $data->description ?? $product->description;
