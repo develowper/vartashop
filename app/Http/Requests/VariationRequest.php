@@ -63,11 +63,11 @@ class VariationRequest extends FormRequest
 
             ]);
         }
-        if ($this->uploading)
-            $tmp = array_merge($tmp, [
-                'img' => ['nullable', 'base64_image_size:' . Variable::PRODUCT_IMAGE_LIMIT_MB * 1024, 'base64_image_mime:' . implode(",", Variable::PRODUCT_ALLOWED_MIMES)],
-
-            ]);
+//        if ($this->uploading)
+//            $tmp = array_merge($tmp, [
+//                'img' => ['nullable', 'base64_image_size:' . Variable::PRODUCT_IMAGE_LIMIT_MB * 1024, 'base64_image_mime:' . implode(",", Variable::PRODUCT_ALLOWED_MIMES)],
+//
+//            ]);
         if ($this->cmnd) {
 
 //            $admin = $this->user();
