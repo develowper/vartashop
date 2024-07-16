@@ -191,6 +191,7 @@ class VariationController extends Controller
                     'agency_level' => $agency->level,
                     'in_auction' => false,
                 ]);
+
             } else {
                 $data->in_shop += $request->in_shop;
                 $data->in_repo += $request->in_repo;
