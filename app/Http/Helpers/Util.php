@@ -104,7 +104,7 @@ class Util
             }
         }
         if ($watermark) {
-            $p = $folder ? "public/$type/$folder/$name.jpg" : "public/$type/$name.jpg";
+            $p = "public/$type/$name.jpg";
             if (Storage::exists("$p")) {
 
                 $image = \Intervention\Image\ImageManagerStatic::make(Storage::path($p));
