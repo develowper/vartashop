@@ -182,6 +182,7 @@ class VariationController extends Controller
                     'product_id' => $request->product_id,
                     'grade' => $request->grade,
                     'pack_id' => $request->pack_id,
+                    'qty' => !$request->pack_id ? 'kg' : 'qty',
                     'agency_id' => $repo->agency_id,
                     'weight' => $request->weight,
                     'price' => $request->price,
