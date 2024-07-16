@@ -53,7 +53,7 @@
 
                     </div>
                   </div>
-                  <div class="flex items-center text-sm ">
+                  <div v-if="data.unit != 'qty'" class="flex items-center text-sm ">
                     <div class="">{{ __('weight') + ' : ' }}</div>
                     <div class="  text-neutral-700 font-bold mx-1 ">{{ parseFloat(data.weight) }}</div>
                     <div class="text-sm text-neutral-500   ">{{ __('kg') }}</div>

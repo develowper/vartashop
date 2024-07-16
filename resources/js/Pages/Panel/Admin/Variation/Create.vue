@@ -103,7 +103,7 @@
               <div class="my-2">
                 <Selector ref="packSelector" v-model="form.pack_id"
                           :data="$page.props.packs"
-                          @change="($e)=> {if(form.pack_id==1)form.weight=1}"
+                          @change="($e)=> {if(form.pack_id==null)form.weight=1}"
                           :error="form.errors.pack_id"
                           :label="__('pack')" classes=""
                           :id="`pack`">
@@ -116,7 +116,7 @@
                     :id="`weight`"
                     type="number"
                     :placeholder="`${__('pack_weight')} (${__('kg')})`"
-                    :disabled="form.pack_id==1? true:false"
+                    :disabled="form.pack_id==null? true:false"
                     classes=" p-2   min-w-[5rem]"
                     v-model="form.weight"
                     autocomplete="weight"
@@ -129,7 +129,7 @@
                 <TextInput
                     :id="`price`"
                     type="number"
-                    :placeholder="form.pack_id==1?__('kg_price'):`${__('pack_price')}  [ ${__('central_profit')}:${asPrice(Math.round($page.props.central_profit*form.price/100))} ] (${__('currency')})`"
+                    :placeholder="`${form.pack_id==null?__('kg_price'):__('pack_price')}  [ ${__('central_profit')}:${asPrice(Math.round($page.props.central_profit*form.price/100))} ] (${__('currency')})`"
                     classes=" p-2   min-w-[5rem]"
                     v-model="form.price"
                     autocomplete="price"
@@ -142,7 +142,7 @@
                 <TextInput
                     :id="`in_repo`"
                     type="number"
-                    :placeholder="`${__('repository_count')} (${form.pack_id==1?__('kg'):__('pack_count')})`"
+                    :placeholder="`${__('repository_count')} (${form.pack_id==null?__('kg'):__('pack_count')})`"
                     classes="    "
                     v-model="form.in_repo"
                     autocomplete="in_repo"
@@ -155,7 +155,7 @@
                 <TextInput
                     :id="`in_shop`"
                     type="number"
-                    :placeholder="`${__('shop_count')} (${form.pack_id==1?__('kg'):__('pack_count')})`"
+                    :placeholder="`${__('shop_count')} (${form.pack_id==null?__('kg'):__('pack_count')})`"
                     classes=" "
                     v-model="form.in_shop"
                     autocomplete="in_shop"

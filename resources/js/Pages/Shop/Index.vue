@@ -92,8 +92,8 @@
                 </div>
 
               </div>
-              <div class="flex items-center text-sm">
-                <div>{{ __('weight') + ` : ${parseFloat(p.weight)}` }}</div>
+              <div v-if="p.unit != 'qty'" class="flex items-center text-sm">
+                <div>{{ (__('weight')) + ` : ${parseFloat(p.weight)}` }}</div>
                 <div class="text-sm text-neutral-500 mx-2">{{
                     p.weight > 0 && p.weight < 1 ? __('gr') : __('kg')
                   }}

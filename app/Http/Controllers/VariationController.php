@@ -110,6 +110,7 @@ class VariationController extends Controller
             'variations.auction_price as auction_price',
             'variations.auction_price as auction_price',
             'variations.weight as weight',
+            'variations.unit as unit',
             'variations.in_auction as in_auction',
             'variations.in_shop as in_shop',
             'variations.product_id as parent_id',
