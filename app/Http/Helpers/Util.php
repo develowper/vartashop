@@ -118,7 +118,7 @@ class Util
                     $font->align('left');
                     $font->valign('bottom');
                 };
-                $image->text("vartashop.ir", 20, $height - 20, $font);
+                $image->text("vartashop.ir", 20, 20, $font);
                 $image->save(Storage::path($p));
             }
         }
