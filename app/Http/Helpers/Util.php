@@ -110,10 +110,10 @@ class Util
                 $image = \Intervention\Image\ImageManagerStatic::make(Storage::path($p));
                 $width = $image->width();
                 $height = $image->height();
-                $font = function (Font $font) use ($height) {
+                $font = function (Font $font) use ($height, $width) {
                     $fontPath = resource_path('fonts/shabnam/Shabnam.ttf');
                     $font->file($fontPath);
-                    $font->size(min(20, $height / 10));
+                    $font->size(max(20, min($height / 10, $width / 10)));
                     $font->color(array(255, 200, 200, .8));
                     $font->align('left');
                     $font->valign('bottom');
