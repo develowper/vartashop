@@ -113,8 +113,8 @@ class Util
                 $font = function (Font $font) use ($height) {
                     $fontPath = resource_path('fonts/shabnam/Shabnam.ttf');
                     $font->file($fontPath);
-                    $font->size(max(20, $height / 10));
-                    $font->color(array(255, 255, 255, .9));
+                    $font->size(min(20, $height / 10));
+                    $font->color(array(255, 200, 200, .8));
                     $font->align('left');
                     $font->valign('bottom');
                 };
