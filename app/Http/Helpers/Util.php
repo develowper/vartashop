@@ -110,15 +110,17 @@ class Util
                 $image = \Intervention\Image\ImageManagerStatic::make(Storage::path($p));
                 $width = $image->width();
                 $height = $image->height();
-                $font = function (Font $font) use ($height, $width) {
+
+                $size = max(20, min($height / 10, $width / 10));
+                $font = function (Font $font) use ($size) {
                     $fontPath = resource_path('fonts/shabnam/Shabnam.ttf');
                     $font->file($fontPath);
-                    $font->size(max(20, min($height / 10, $width / 10)));
+                    $font->size($size);
                     $font->color(array(255, 200, 200, .8));
                     $font->align('left');
                     $font->valign('bottom');
                 };
-                $image->text("vartashop.ir", 20, 20, $font);
+                $image->text("vartashop.ir", 20, $size, $font);
                 $image->save(Storage::path($p));
             }
         }
