@@ -370,7 +370,7 @@ class VariationController extends Controller
                     if (!$newVariation) {
                         $newVariation = Variation::create([
                             'repo_id' => $newRepo->id,
-                            'in_repo' => $request->new_in_repo ?: $data->in_repo,//copy
+                            'in_repo' => $request->new_in_repo ?: $data->in_repo,
                             'product_id' => $data->product_id,
                             'grade' => $data->grade,
                             'pack_id' => $data->pack_id,
