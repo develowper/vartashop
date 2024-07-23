@@ -258,7 +258,6 @@ class VariationController extends Controller
     public
     function update(VariationRequest $request)
     {
-
         $response = ['message' => __('response_error')];
         $errorStatus = Variable::ERROR_STATUS;
         $successStatus = Variable::SUCCESS_STATUS;
