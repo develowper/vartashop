@@ -56,7 +56,7 @@ class VariationRequest extends FormRequest
                 "in_shop" => ['required', 'numeric', 'gte:0', 'lt:99999'],
                 "pack_id" => ['required', 'nullable', Rule::in($packs)],
                 "grade" => ['required', Rule::in($grades)],
-                "weight" => ['required', 'numeric', 'gte:0', 'lt:99999', $this->pack_id == null ? Rule::in(1) : ''],
+                "weight" => ['required', 'numeric', 'gte:0', 'lt:99999', $this->pack_id == null ? Rule::in(1) : 'numeric'],
                 "price" => ['required', 'numeric', 'gte:0'],
 //                'tags' => ['nullable', 'max:1024'],
 //                'category_id' => ['required', Rule::in(Category::pluck('id'))],
