@@ -12,7 +12,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ftp.vartashop.ir
-          protocol: ftps
+          protocol: ftp
           port: 21
           username: qrimagec
           password: ${{ secrets.FTP_PASSWORD }}
